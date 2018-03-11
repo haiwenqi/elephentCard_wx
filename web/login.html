@@ -1,0 +1,79 @@
+<!--登录~手机号，发送验证码页面-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="full-screen" content="yes">
+	    <meta name="x5-fullscreen" content="true">
+	    <meta name="applicable-device" content="mobile">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+	    <!--reset.css重置样式文件-->
+	    <link rel="stylesheet" type="text/css" href="../static/css/public/reset.css"/>
+	    <!--所有html里公共样式，如header、footer-->
+	    <link rel="stylesheet" type="text/css" href="../static/css/public/common.css"/>
+	    <link rel="stylesheet" type="text/css" href="../static/css/login.css"/>
+	    <!--flexible.js适配屏幕-->
+	    <script src="../static/js/public/flexible.js" type="text/javascript" charset="utf-8"></script>
+	   <!--fastclick.js解决移动端点透问题-->
+	    <script src="../static/js/public/fastclick.js" type="text/javascript" charset="utf-8"></script>
+		<title>登录大象卡</title>
+	</head>
+	<body class="max-body">
+		<h4 class="top_title">输入常用手机号</h4>
+		<label for="telNum" class="tel_label clear">
+			<span>常用手机号</span>
+			<input type="tel" id="telNum" value="" placeholder="请输入手机号"/>
+		</label>
+		<label for="verifCode" class="verifCode_label clear">
+			<input type="text" id="verifCode" value="" placeholder="请输入验证码"/>
+			<span onclick="getVerifCode(this)">获取验证码</span>
+		</label>
+		<div class="tips">
+			<p class="tip_msg">验证码已发送，留意短信提醒</p>
+			<!--有四种错误提示-->
+			<p class="tip_error" id="errorType1">您输入的验证码有误，请重新输入</p>
+			<p class="tip_error" id="errorType2">您的手机号已绑定，请更换号码重新输入</p>
+			<p class="tip_error" id="errorType3">当前手机号未绑定大象卡，请填写开卡的手机号</p>
+			<p class="tip_error" id="errorType4">请输入正确的手机号</p>
+		</div>
+		<div class="btn">下一步</div>
+		<p class="bottomTips">每个手机号，只能绑定一张大象卡</p>
+		
+		
+		<script src="../static/js/public/jquery/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//"验证码已发送"字样显示，2s后隐藏
+			function showMsgTips(){
+				$(".tip_msg").fadeIn();
+				setTimeout(function(){
+					$(".tip_msg").fadeOut();
+				},2000);
+			}
+			
+			var countdown=90; 
+			function getVerifCode(obj){
+				//倒计时js方法，也可以换别的方法
+			    if (countdown == 0) {    
+			        obj.innerHTML="获取验证码"; 
+			        countdown = 90; 
+			        return;
+			    } else {
+			        obj.classList.add("countDown"); 
+			        obj.innerHTML=countdown+"s"; 
+			        countdown--; 
+			    } 
+				setTimeout(function() { 
+				    getVerifCode(obj) 
+				},1000); 
+			}
+		</script>
+	</body>
+</html>
+<!--
+	未完成：1、校验手机号
+		  2、点击"获取验证码" 倒计时效果不对
+		  3、点击"获取验证码" 应该调用showMsgTips()
+-->

@@ -1,0 +1,50 @@
+.tel_label,.verifCode_label{
+	display: block;
+	border-bottom: 1px solid #ddd;
+}
+.tel_label span,.tel_label input,.verifCode_label span,.verifCode_label input{
+	float: left;
+	font-size: 16px;
+	line-height: 28px;
+}
+.tel_label{
+	margin-bottom: 0.38rem;
+}
+.tel_label span{
+	margin-right: 0.3rem;
+}
+.verifCode_label span{
+	float: right;
+	color: #1D98FA;
+	margin-left: 0.3rem;
+}
+/*"获取验证码"为倒计时状态*/
+.verifCode_label span.countDown{
+	color: #999;
+}
+/*===*/
+.tips{
+	padding-top: 0.22rem;
+	height: 1.12rem;
+	overflow: hidden;
+}
+.tips .tip_msg{
+	display: none;
+	font-size: 12px;
+}
+.tips .tip_error{
+	display: none;
+	font-size: 16px;
+	color: #FB4444;
+}
+/*===*/
+.bottomTips{
+	font-size: 16px;
+	color: #999;
+	position: absolute;
+	bottom: 1.14rem;
+	width: 100%;
+	left: 50%;
+	margin-left: -50%;
+	text-align: center;
+}
